@@ -94,7 +94,7 @@ def render_lean_project(outdir=None, templates=None, css=None, interactive=None,
             shutil.copy(path, outdir)
 
     if interactive == None:
-        interactive = (format_toml.get('interactive') != 0)
+        interactive = (format_toml.get('interactive', 0) != 0)
 
     if interactive:
         jss += interactive_server(interactive_path=interactive_path, paths=paths,

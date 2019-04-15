@@ -66,7 +66,7 @@ You can then get rid of this folder.
 
 Sill inside the virtual environment, type 
 ```bash
-git clone https://github.com/leanprover-community/format_lean.git
+git clone https://github.com/mpedramfar/format_lean.git
 cd format_lean
 pip install .
 ```

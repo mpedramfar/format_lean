@@ -11,7 +11,7 @@ and run `pip install .` (using `sudo -H` if needed). It's also recommended to
 install `ipython` for interactive use. Alternatively, if you don't want to mess
 up with your global python environment, you can use a dedicated virtual
 environment. This is explained in the more complete 
-[installation guide](https://github.com/leanprover-community/format_lean/blob/master/INSTALL.md).
+[installation guide](https://github.com/mpedramfar/format_lean/blob/master/INSTALL.md).
 
 ## Usage
 
@@ -60,10 +60,10 @@ Proof = "Démonstration"
 ### Interactive webpage
 When using `format_project`, you can add the option `--interactive` or add a line `interactive = 1` to the file `format.toml` to get an interactive webpage with a javascript Lean server.
 The interactive component needs to be compiled before usage.
-Follow the instructions in `INSTALL.md` to compile it.
+Follow the instructions in [installation guide](https://github.com/mpedramfar/format_lean/blob/master/INSTALL.md) to compile it.
 
 
-#### Remarks
+#### Remarks about using the interactive option
 
 - If you are importing a Lean file, make sure to build the corresponding `.olean` file before running `format_project`. Otherwise, the page will load but the javascript Lean server will raise an import error.
 - To make an interactive webpage, the javascript Lean server is downloaded from `https://leanprover.github.io/live/{toolchain}/`.
