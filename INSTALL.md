@@ -67,5 +67,6 @@ You can then get rid of this folder.
 Install [`nodejs`](https://nodejs.org/en/download/) and sill inside the virtual environment, type 
 ```bash
 git clone https://github.com/mpedramfar/format_lean.git
+cd format_lean
 python install_lean_formatter.py
 ```
