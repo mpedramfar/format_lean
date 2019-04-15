@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 
+
 setup(
     name='Lean formatter',
     version='0.0.2',
@@ -9,7 +10,8 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     package_data={
-        '': ['*.css', '*.css.map', '*.js', 'templates/*'],
+        '': ['*.css', '*.css.map', '*.js', 'templates/*', 'interactive_interface/*', 'interactive_interface/src/*'],
     },
     scripts=['bin/format_lean', 'bin/format_project'],
     install_requires=['regex >= 2018.7.11', 'jinja2 >= 2.10', 'mistletoe >= 0.7.1', 'toml >= 0.10.0', 'fire >= 0.1.3'])
+

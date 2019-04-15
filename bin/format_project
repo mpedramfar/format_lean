@@ -20,10 +20,10 @@ from format_lean.objects import (HeaderBegin, HeaderEnd, SectionBegin,
     ProofBegin, ProofEnd,
     ProofComment)
 
-from interactive.server import interactive_server
+from format_lean.interactive_loader import interactive_server
 
 module_path = Path(format_lean.__file__).parent
-interactive_path = module_path.parent / 'interactive/dist'
+interactive_path = module_path / 'interactive'
 
 def render_lean_project(outdir=None, templates=None, css=None, interactive=None,
         debug=False):
@@ -68,8 +68,7 @@ def render_lean_project(outdir=None, templates=None, css=None, interactive=None,
         lang = dict()
 
     outdir = outdir or format_toml.get('outdir', 'html')
-    if not Path(outdir).is_dir():
-        os.makedirs(outdir)
+    Path(outdir).mkdir(exist_ok=True)
 
     csss = css or format_toml.get('css', ['lecture.css'])
     csss += ['colorful.css']

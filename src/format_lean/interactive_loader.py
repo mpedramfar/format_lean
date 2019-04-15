@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import zipfile
+import zipfile, subprocess
 import glob, shutil, distutils
 import urllib.request
 from pathlib import Path
@@ -64,8 +64,7 @@ class interactive_server:
             for js_file in glob.glob( str(self.interactive_path / '*.js') ):
                 shutil.copy(js_file, self.outdir)
         except :
-            print('There was a problem copying the compiled interactive component. Have you compiled it using the instructions in "INSTALL.md" ?')
-            print('I will make a non-interactive webpage instead.')
+            print('There was a problem copying the interactive interface. I will make a non-interactive webpage instead.')
             return False
 
         self.make_library()
@@ -73,7 +72,8 @@ class interactive_server:
         return True
 
     def get_jss(self):
-        if self.copy_server():
-            return ['vs/loader.js', 'vs/editor/editor.main.nls.js', 'vs/editor/editor.main.js', 'interactive.js']
-        else:
+        if not self.copy_server():
             return []
+
+        return ['vs/loader.js', 'vs/editor/editor.main.nls.js', 'vs/editor/editor.main.js', 'interactive.js']
+

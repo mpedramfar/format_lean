@@ -62,26 +62,10 @@ you left it after creating it. Then download pygment using the above
 link, uncompress it, go to the created folder and type `pip install .`.
 You can then get rid of this folder.
 
-## Install `format_lean`
+## Install `Lean-formatter`
 
-Sill inside the virtual environment, type 
+Install [`nodejs`](https://nodejs.org/en/download/) and sill inside the virtual environment, type 
 ```bash
 git clone https://github.com/mpedramfar/format_lean.git
-cd format_lean
-pip install .
-```
-
-You now have the format Lean library inside you virtual environment. You
-probably also want to `pip install ipython` for a nicer interactive
-experience.
-
-## Compile the interactive component
-
-The interactive component needs to be compiled before usage.
-First you need to install [`nodejs`](https://nodejs.org/en/download/) and then run the following commands.
-
-```
-cd src/interactive
-npm install
-./node_modules/.bin/webpack
+python install_lean_formatter.py
 ```
