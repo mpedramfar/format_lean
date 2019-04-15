@@ -66,7 +66,7 @@ class Renderer:
     transform_example = transform_theorem
     transform_lemma = transform_theorem
 
-    def render(self, objects, out_path, page_context=None, title=None):
+    def render(self, raw_text, objects, out_path, page_context=None, title=None):
         """
         Renders objects to path
         """
@@ -78,6 +78,7 @@ class Renderer:
             self.env.get_template(obj.name).render(obj=color(obj),
                 lang=page_context['lang']) for obj in objects])
         page_context['content'] = res
+        page_context['raw_text'] = raw_text
         self.env.get_template('page').stream(page_context).dump(out_path)
 
     @classmethod

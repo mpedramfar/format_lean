@@ -1,0 +1,12 @@
+css = ["tufte.css", "et-book.css", "with_tufte.css"]
+assets = ["et-book", "tufte.css", "et-book.css"]
+js = []
+only = ["sandwich.lean"]
+outdir = "output"
+interactive = 1
+tactic_state_filters = [
+  ['is_limit ([^ ]+) ([^ ]+)', '\1ₙ tends to \2'],
+  ['ℕ → ℝ', 'ℝ-valued sequence'],
+  ['([a-z]) n([ ,\n])', '\1ₙ\2'],
+  ['no goals', 'Current goal completed!'],
+]

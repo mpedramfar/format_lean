@@ -1,0 +1,32 @@
+{
+  "name": "lean-formatter-interactive",
+  "version": "1.0.0",
+  "description": "Interactive component of Lean formatter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohammad Pedramfar",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@types/node": "^9.4.6",
+    "@types/react": "16.0.38",
+    "@types/react-dom": "16.0.4",
+    "lean-client-js-browser": "^1.2.12",
+    "monaco-editor": "0.10.1",
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "copy-webpack-plugin": "^4.4.1",
+    "ts-loader": "^3.5.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.1",
+    "webpack": "^3.11.0",
+    "worker-loader": "^1.1.0"
+  }
+}

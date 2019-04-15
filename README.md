@@ -56,3 +56,15 @@ Lemma = "Lemme"
 Theorem = "Théorème"
 Proof = "Démonstration"
 ```
+
+### Interactive webpage
+When using `format_project`, you can add the option `--interactive` or add a line `interactive = 1` to the file `format.toml` to get an interactive webpage with a javascript Lean server.
+The interactive component needs to be compiled before usage.
+Follow the instructions in `INSTALL.md` to compile it.
+
+
+#### Remarks
+
+- If you are importing a Lean file, make sure to build the corresponding `.olean` file before running `format_project`. Otherwise, the page will load but the javascript Lean server will raise an import error.
+- To make an interactive webpage, the javascript Lean server is downloaded from `https://leanprover.github.io/live/{toolchain}/`.
+(Replace `{toolchain}` with the version of Lean that you're working with). For example, if you are using Lean 3.4.2, the Lean formatter will try to download the javascript Lean server from [`https://leanprover.github.io/live/3.4.2/`](https://leanprover.github.io/live/3.4.2/). If this link doesn't work or download fails for any reason, Lean formatter will give up and generate a non-interactive webpage instead.

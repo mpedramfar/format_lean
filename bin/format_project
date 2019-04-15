@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 from pathlib import Path
-import os, sys, shutil, distutils.dir_util
+import os, sys, shutil, glob, distutils.dir_util
 
 import regex
 from fire import Fire
@@ -20,9 +20,12 @@ from format_lean.objects import (HeaderBegin, HeaderEnd, SectionBegin,
     ProofBegin, ProofEnd,
     ProofComment)
 
-module_path = Path(format_lean.__file__).parent
+from interactive.server import interactive_server
 
-def render_lean_project(outdir=None, templates=None, css=None,
+module_path = Path(format_lean.__file__).parent
+interactive_path = module_path.parent / 'interactive/dist'
+
+def render_lean_project(outdir=None, templates=None, css=None, interactive=None,
         debug=False):
     try:
         leanpkg_toml = toml.load('leanpkg.toml')
@@ -50,7 +53,7 @@ def render_lean_project(outdir=None, templates=None, css=None,
         print(" I couldn't find format.toml, but I'll continue, "
               "hoping you know what you are doing.")
         format_toml = dict()
-
+    
     templates = templates or (format_toml.get('templates') or 
                               str(module_path / 'templates/'))
     if debug:
@@ -89,6 +92,14 @@ def render_lean_project(outdir=None, templates=None, css=None,
         for path in module_path.glob('*.js'):
             jss.append(path.name)
             shutil.copy(path, outdir)
+
+    if interactive == None:
+        interactive = (format_toml.get('interactive') != 0)
+
+    if interactive:
+        jss += interactive_server(interactive_path=interactive_path, paths=paths,
+                    toolchain=toolchain, source_lib='.', outdir=outdir, debug=debug).get_jss()
+
 
     assets = format_toml.get('assets', [])
     for asset in assets:
@@ -147,7 +158,7 @@ def render_lean_project(outdir=None, templates=None, css=None,
                'jss': [prefix + js  for js in jss],
                'title': lean_file.name.replace('.lean', ''),
                'lang': lang}
-        renderer.render(lecture_reader.output, outpath, page_context=pc)
+        renderer.render(lecture_reader.raw_text, lecture_reader.output, outpath, page_context=pc)
         lecture_reader.hard_reset()
 
 if __name__ == '__main__':

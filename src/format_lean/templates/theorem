@@ -1,4 +1,4 @@
-<div class="theorem_wrapper">
+<div class="theorem_wrapper" editable_text="[{{ obj.first_line_nb }}, {{ obj.last_line_nb }}]">
   <span class="theorem_label">{{ lang.get('Theorem', 'Theorem') }}</span>
   <div class="theorem_content">
 	<div class="theorem_text">

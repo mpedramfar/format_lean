@@ -37,15 +37,23 @@ class FileReader:
         self.server.sync(path)
         self.filename = path
         with open(str(path), 'r') as f:
+            self.raw_text = f.read()
+            f.seek(0)
             for line in f:
+                if len(self.output) > 0 and self.status != '':
+                    self.output[-1].last_line_nb = self.cur_line_nb
                 for reader in self.readers:
                     if reader.read(self, line):
+                        if len(self.output) > 0 and ('first_line_nb' not in dir(self.output[-1])):
+                            self.output[-1].first_line_nb = self.cur_line_nb
+                            self.output[-1].last_line_nb = self.cur_line_nb
                         break
                 else:
                     if blank_line_regex.match(line):
                         self.blank_line_handler(self, line)
                     else:
                         self.normal_line_handler(self, line)
+                
                 self.cur_line_nb += 1
 
 class LineReader:

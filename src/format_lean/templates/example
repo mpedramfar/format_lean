@@ -1,4 +1,4 @@
-<div class="example_wrapper">
+<div class="example_wrapper" editable_text="[{{ obj.first_line_nb }}, {{ obj.last_line_nb }}]">
   <span class="example_label">{{ lang.get('Example', 'Example') }}</span>
   <div class="example_content">
 	<div class="example_text">

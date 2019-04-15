@@ -1,4 +1,4 @@
-<div class="lemma_wrapper">
+<div class="lemma_wrapper" editable_text="[{{ obj.first_line_nb }}, {{ obj.last_line_nb }}]">
   <span class="lemma_label">{{ lang.get('Lemma', 'Lemma') }}</span>
   <div class="lemma_content">
 	<div class="lemma_text">

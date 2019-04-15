@@ -74,3 +74,14 @@ pip install .
 You now have the format Lean library inside you virtual environment. You
 probably also want to `pip install ipython` for a nicer interactive
 experience.
+
+## Compile the interactive component
+
+The interactive component needs to be compiled before usage.
+First you need to install [`nodejs`](https://nodejs.org/en/download/) and then run the following commands.
+
+```
+cd src/interactive
+npm install
+./node_modules/.bin/webpack
+```
